@@ -1,6 +1,7 @@
 package model;
 
 public class Customer {
+    private static final String EMAIL_REGEX = "^(.+)@(.+).(.+)$";
     private final String firstName;
     private final String lastName;
     private final String email;
