@@ -23,11 +23,13 @@ public class Customer {
                 + ", Email: " + this.email;
     }
 
-    private void isValidEmail(String email) {
+    private boolean  isValidEmail(String email) {
         Pattern pattern = Pattern.compile(EMAIL_REGEX);
 
         if(!pattern.matcher(email).matches()) {
             throw new IllegalArgumentException("Invalid email format");
+        } else {
+            return true;
         }
     }
 }
