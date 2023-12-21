@@ -24,4 +24,8 @@ public class ReservationService {
     public Collection<IRoom> findRooms(Date checkInDate, Date checkOutDate) {
         return null;
     }
+
+    public Collection<Reservation> getCustomerReservation(Customer customer) {
+        return null;
+    }
 }
