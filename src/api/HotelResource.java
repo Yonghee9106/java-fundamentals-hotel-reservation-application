@@ -16,7 +16,7 @@ public class HotelResource {
 
     }
 
-    public IRoom etRoom(String roomNumber) {
+    public IRoom getRoom(String roomNumber) {
         return null;
     }
 
