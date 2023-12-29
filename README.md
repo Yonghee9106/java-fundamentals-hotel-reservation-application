@@ -1,4 +1,9 @@
 # Hotel Reservation Application
 
 ## Project Description
-This project
+
+## Features
+
+## Scenarios
+
+## Architecture
