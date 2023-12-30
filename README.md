@@ -5,6 +5,8 @@
 ## Features
 
 ## Scenarios
+### Main User
+### Admin User
 
 ## Architecture
 ![Capture](https://github.com/Yonghee9106/java-fundamentals-hotel-reservation-application/assets/79752787/88c8b60e-792c-4fd1-9661-3f9a9d84a302)
