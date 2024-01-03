@@ -14,16 +14,16 @@ public class MainMenu {
                 if (selectedMenu.length() == 1) {
                     switch (selectedMenu.charAt(0)) {
                         case '1':
-                            System.out.println("1");
+                            System.out.println("Find and reserve a room");
                             break;
                         case '2':
-                            System.out.println("2");
+                            System.out.println("See my reservations");
                             break;
                         case '3':
-                            System.out.println("3");
+                            System.out.println("Create an Account");
                             break;
                         case '4':
-                            System.out.println("4");
+                            System.out.println("Admin");
                             break;
                         case '5':
                             System.out.println("Exit");
