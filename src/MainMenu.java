@@ -1,6 +1,12 @@
+import java.util.Scanner;
+
 public class MainMenu {
     public static void mainMenu() {
+        String selectedMenu = "";
+        Scanner scanner = new Scanner(System.in);
+
         displayMainMenu();
+        selectedMenu = scanner.nextLine();
     }
 
     private static void displayMainMenu() {
@@ -12,6 +18,6 @@ public class MainMenu {
                 "4. Admin\n" +
                 "5. Exit\n" +
                 "-------------------------------------------------------\n" +
-                "Please select a number for the menu option\n");
+                "Please select a number for the menu option");
     }
 }
