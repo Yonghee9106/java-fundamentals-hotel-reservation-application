@@ -37,7 +37,7 @@ public class MainMenu {
                 }
             } while (selectedMenu.charAt(0) != '5' || selectedMenu.length() != 1);
         } catch (Exception ex) {
-            System.err.println("An error occurred: " + ex.getMessage());
+            System.err.println("An error occurred while choosing main menu options: " + ex.getMessage());
         }
     }
 
