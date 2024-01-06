@@ -6,6 +6,42 @@ public class AdminMenu {
         Scanner scanner = new Scanner(System.in);
 
         displayAdminMenu();
+
+        try {
+            do {
+                selectedMenu = scanner.nextLine();
+
+                if (selectedMenu.length() == 1) {
+                    switch (selectedMenu.charAt(0)) {
+                        case '1':
+                            System.out.println("See all Customers");
+                            break;
+                        case '2':
+                            System.out.println("See all Rooms");
+                            break;
+                        case '3':
+                            System.out.println("See all Reservations");
+                            break;
+                        case '4':
+                            System.out.println("Add a Room");
+                            break;
+                        case '5':
+                            System.out.println("Add Test Data");
+                            break;
+                        case '6':
+                            MainMenu.mainMenu();
+                            break;
+                        default:
+                            System.out.println("Please enter a valid option number (1-6)\n");
+                            break;
+                    }
+                } else {
+                    System.out.println("Please enter a single-digit option number (1-6)\n");
+                }
+            } while (selectedMenu.charAt(0) != '6' || selectedMenu.length() != 1);
+        } catch (Exception ex) {
+            System.err.println("An error occurred while choosing main menu options: " + ex.getMessage());
+        }
     }
 
     private static void displayAdminMenu() {
