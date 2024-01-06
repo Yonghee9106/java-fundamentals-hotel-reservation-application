@@ -23,7 +23,7 @@ public class MainMenu {
                             System.out.println("Create an Account");
                             break;
                         case '4':
-                            System.out.println("Admin");
+                            AdminMenu.adminMenu();
                             break;
                         case '5':
                             System.out.println("Exit");
