@@ -23,7 +23,7 @@ public class AdminMenu {
                             System.out.println("See all Reservations");
                             break;
                         case '4':
-                            System.out.println("Add a Room");
+                            addRoom();
                             break;
                         case '5':
                             System.out.println("Add Test Data");
@@ -55,5 +55,12 @@ public class AdminMenu {
                 "6. Back to Main Menu\n" +
                 "-------------------------------------------------------\n" +
                 "Please select a number for the menu option");
+    }
+
+    private static void addRoom() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter room number:");
+        String roomNumber = scanner.nextLine();
     }
 }
