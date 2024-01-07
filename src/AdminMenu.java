@@ -60,7 +60,19 @@ public class AdminMenu {
     private static void addRoom() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter room number:");
+        System.out.println("Enter room number");
         String roomNumber = scanner.nextLine();
+
+        System.out.println("Enter price per night");
+        double roomPrice = addRoomPrice(scanner);
+    }
+
+    private static double addRoomPrice(Scanner scanner) {
+        try {
+            return Double.parseDouble(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid price format! Please, enter a valid double number.");
+            return addRoomPrice(scanner);
+        }
     }
 }
