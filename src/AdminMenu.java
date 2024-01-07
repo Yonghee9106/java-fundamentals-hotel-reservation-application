@@ -1,3 +1,5 @@
+import model.RoomType;
+
 import java.util.Scanner;
 
 public class AdminMenu {
@@ -65,6 +67,9 @@ public class AdminMenu {
 
         System.out.println("Enter price per night");
         double roomPrice = addRoomPrice(scanner);
+
+        System.out.println("Enter room type: 1 for single bed, 2 for double bed");
+        final RoomType roomType = addRoomType(scanner);
     }
 
     private static double addRoomPrice(Scanner scanner) {
@@ -73,6 +78,15 @@ public class AdminMenu {
         } catch (NumberFormatException e) {
             System.out.println("Invalid price format! Please, enter a valid double number.");
             return addRoomPrice(scanner);
+        }
+    }
+
+    private static RoomType addRoomType(Scanner scanner) {
+        try {
+            return RoomType.valueOfLabel(scanner.nextLine());
+        } catch (IllegalArgumentException e) {
+            System.out.println("Invalid room type! Please, enter 1 for single bed, 2 for double bed.");
+            return addRoomType(scanner);
         }
     }
 }
