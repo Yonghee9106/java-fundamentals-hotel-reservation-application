@@ -70,6 +70,9 @@ public class AdminMenu {
 
         System.out.println("Enter room type: 1 for single bed, 2 for double bed");
         final RoomType roomType = addRoomType(scanner);
+
+        System.out.println("Would like to add another room? Y/N");
+        addAnotherRoom();
     }
 
     private static double addRoomPrice(Scanner scanner) {
@@ -88,5 +91,8 @@ public class AdminMenu {
             System.out.println("Invalid room type! Please, enter 1 for single bed, 2 for double bed.");
             return addRoomType(scanner);
         }
+    }
+
+    private static void addAnotherRoom() {
     }
 }
