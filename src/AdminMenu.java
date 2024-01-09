@@ -71,7 +71,7 @@ public class AdminMenu {
         System.out.println("Enter room type: 1 for single bed, 2 for double bed");
         final RoomType roomType = addRoomType(scanner);
 
-        System.out.println("Would like to add another room? Y/N");
+        System.out.println("Would like to add another room y/n");
         addAnotherRoom();
     }
 
@@ -94,5 +94,14 @@ public class AdminMenu {
     }
 
     private static void addAnotherRoom() {
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+            String addAnotherRoomChoice;
+            addAnotherRoomChoice = scanner.nextLine();
+
+        } catch (StringIndexOutOfBoundsException e) {
+            addAnotherRoom();
+        }
     }
 }
