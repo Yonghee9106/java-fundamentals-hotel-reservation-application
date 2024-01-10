@@ -100,6 +100,11 @@ public class AdminMenu {
             String addAnotherRoomChoice;
             addAnotherRoomChoice = scanner.nextLine();
 
+            while ((addAnotherRoomChoice.charAt(0) != 'Y' && addAnotherRoomChoice.charAt(0) != 'N') || addAnotherRoomChoice.length() != 1) {
+                System.out.println("Please enter Y (Yes) or N (No)");
+                addAnotherRoomChoice = scanner.nextLine();
+            }
+
         } catch (StringIndexOutOfBoundsException e) {
             addAnotherRoom();
         }
