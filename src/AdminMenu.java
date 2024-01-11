@@ -1,3 +1,4 @@
+import model.Room;
 import model.RoomType;
 
 import java.util.Scanner;
@@ -71,6 +72,8 @@ public class AdminMenu {
         System.out.println("Enter room type: 1 for single bed, 2 for double bed");
         final RoomType roomType = addRoomType(scanner);
 
+        Room newRoom = new Room(roomNumber, roomPrice, roomType);
+
         System.out.println("Would like to add another room y/n");
         addAnotherRoom();
     }
@@ -103,6 +106,14 @@ public class AdminMenu {
             while ((addAnotherRoomChoice.charAt(0) != 'Y' && addAnotherRoomChoice.charAt(0) != 'N') || addAnotherRoomChoice.length() != 1) {
                 System.out.println("Please enter Y (Yes) or N (No)");
                 addAnotherRoomChoice = scanner.nextLine();
+            }
+
+            if (addAnotherRoomChoice.charAt(0) == 'Y') {
+                addRoom();
+            } else if (addAnotherRoomChoice.charAt(0) == 'N') {
+                displayAdminMenu();
+            } else {
+                addAnotherRoom();
             }
 
         } catch (StringIndexOutOfBoundsException e) {
