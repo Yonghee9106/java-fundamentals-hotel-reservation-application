@@ -6,11 +6,23 @@ import model.Reservation;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ReservationService {
 
-    public void addRoom(IRoom room) {
+    private static final ReservationService SINGLETON = new ReservationService();
+    public static Map<String,IRoom> ListOfRoom = new HashMap<>();
 
+    private ReservationService() {}
+
+    public static ReservationService getSingleton() {
+        return SINGLETON;
+    }
+
+    public void addRoom(IRoom room) {
+        ListOfRoom.put(room.getRoomNumber(), room);
+        System.out.println(ListOfRoom);
     }
 
     public IRoom getARoom(String roomId) {

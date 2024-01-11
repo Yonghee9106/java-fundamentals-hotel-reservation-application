@@ -13,7 +13,7 @@ public class Room implements IRoom {
 
     @Override
     public String getRoomNumber() {
-        return null;
+        return this.roomNumber;
     }
 
     @Override

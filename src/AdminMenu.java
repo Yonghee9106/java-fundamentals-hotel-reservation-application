@@ -1,9 +1,12 @@
+import api.AdminResource;
 import model.Room;
 import model.RoomType;
 
+import java.util.Collections;
 import java.util.Scanner;
 
 public class AdminMenu {
+    private static final AdminResource adminResource = AdminResource.getSingleton();
     public static void adminMenu() {
         String selectedMenu = "";
         Scanner scanner = new Scanner(System.in);
@@ -73,6 +76,7 @@ public class AdminMenu {
         final RoomType roomType = addRoomType(scanner);
 
         Room newRoom = new Room(roomNumber, roomPrice, roomType);
+        adminResource.addRoom(Collections.singletonList(newRoom));
 
         System.out.println("Would like to add another room y/n");
         addAnotherRoom();
