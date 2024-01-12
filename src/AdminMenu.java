@@ -1,7 +1,9 @@
 import api.AdminResource;
+import model.IRoom;
 import model.Room;
 import model.RoomType;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Scanner;
 
@@ -23,7 +25,7 @@ public class AdminMenu {
                             System.out.println("See all Customers");
                             break;
                         case '2':
-                            System.out.println("See all Rooms");
+                            displayAllRooms();
                             break;
                         case '3':
                             System.out.println("See all Reservations");
@@ -61,6 +63,16 @@ public class AdminMenu {
                 "6. Back to Main Menu\n" +
                 "-------------------------------------------------------\n" +
                 "Please select a number for the menu option");
+    }
+
+    private static void displayAllRooms() {
+        Collection<IRoom> allRooms = adminResource.getAllRooms();
+
+        if(allRooms.isEmpty()) {
+            System.out.println("No rooms found.");
+        } else {
+            adminResource.getAllRooms().forEach(System.out::println);
+        }
     }
 
     private static void addRoom() {

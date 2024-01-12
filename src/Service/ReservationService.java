@@ -29,6 +29,10 @@ public class ReservationService {
         return null;
     }
 
+    public Collection<IRoom> getAllRooms() {
+        return ListOfRoom.values();
+    }
+
     public Reservation reserveARoom(Customer custoemr, IRoom room, Date checkInData, Date checkOutDate) {
         return null;
     }
