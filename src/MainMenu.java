@@ -20,7 +20,7 @@ public class MainMenu {
                             System.out.println("See my reservations");
                             break;
                         case '3':
-                            System.out.println("Create an Account");
+                            createAccount();
                             break;
                         case '4':
                             AdminMenu.adminMenu();
@@ -51,5 +51,18 @@ public class MainMenu {
                 "5. Exit\n" +
                 "-------------------------------------------------------\n" +
                 "Please select a number for the menu option");
+    }
+
+    private static void createAccount() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter Email format: name@domain.com");
+        String userEmail = scanner.nextLine();
+
+        System.out.println("First Name");
+        String firstName = scanner.nextLine();
+
+        System.out.println("Last Name");
+        String lastName = scanner.nextLine();
     }
 }

@@ -71,12 +71,13 @@ public class AdminMenu {
         if(allRooms.isEmpty()) {
             System.out.println("No rooms found.");
         } else {
-//            adminResource.getAllRooms().forEach(System.out::println);
             adminResource.getAllRooms().forEach(room -> {
                 String roomType = room.getRoomType().equals("2") ? "Double bed" : "Single bed";
                 System.out.println("Room Number: " + room.getRoomNumber() + " " + roomType + " Room Price: $" + room.getRoomPrice());
             });
         }
+
+        displayAdminMenu();
     }
 
     private static void addRoom() {
