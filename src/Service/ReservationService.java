@@ -22,7 +22,6 @@ public class ReservationService {
 
     public void addRoom(IRoom room) {
         ListOfRoom.put(room.getRoomNumber(), room);
-        System.out.println(ListOfRoom);
     }
 
     public IRoom getARoom(String roomId) {

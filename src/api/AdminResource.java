@@ -23,7 +23,6 @@ public class AdminResource {
     }
 
     public void addRoom(List<IRoom> rooms) {
-        System.out.println("admin resource addRoom");
         rooms.forEach(reservationService::addRoom);
     }
 

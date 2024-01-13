@@ -3,12 +3,12 @@ package model;
 public class Room implements IRoom {
     private final String roomNumber;
     private final Double price;
-    private final RoomType enumeration;
+    private final RoomType roomType;
 
     public Room(String roomNumber, Double price, RoomType enumeration) {
         this.roomNumber = roomNumber;
         this.price = price;
-        this.enumeration = enumeration;
+        this.roomType = enumeration;
     }
 
     @Override
@@ -18,12 +18,12 @@ public class Room implements IRoom {
 
     @Override
     public Double getRoomPrice() {
-        return null;
+        return this.price;
     }
 
     @Override
     public RoomType getRoomType() {
-        return null;
+        return this.roomType;
     }
 
     @Override
@@ -35,6 +35,6 @@ public class Room implements IRoom {
     public String toString() {
         return "Room Number: " + roomNumber
                 + ", Price: " + price
-                + ", Type: " + enumeration;
+                + ", Type: " + roomType;
     }
 }
