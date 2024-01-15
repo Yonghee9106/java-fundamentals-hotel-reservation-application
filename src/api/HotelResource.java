@@ -8,6 +8,15 @@ import java.util.Collection;
 import java.util.Date;
 
 public class HotelResource {
+
+    private static final HotelResource SINGLETON = new HotelResource();
+
+    private HotelResource() {}
+
+    public static HotelResource getSingleton() {
+        return SINGLETON;
+    }
+
     public Customer getCustomer(String email) {
         return null;
     }
