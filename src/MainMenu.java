@@ -1,6 +1,9 @@
+import api.HotelResource;
+
 import java.util.Scanner;
 
 public class MainMenu {
+    private static final HotelResource hotelResource = HotelResource.getSingleton();
     public static void mainMenu() {
         String selectedMenu = "";
         Scanner scanner = new Scanner(System.in);
@@ -64,5 +67,11 @@ public class MainMenu {
 
         System.out.println("Last Name");
         String lastName = scanner.nextLine();
+
+        try {
+
+        } catch (IllegalArgumentException ex) {
+
+        }
     }
 }
