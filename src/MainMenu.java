@@ -1,9 +1,13 @@
 import api.HotelResource;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class MainMenu {
     private static final HotelResource hotelResource = HotelResource.getSingleton();
+    private static final String DATE_FORMAT = "MM/dd/yyyy";
     public static void mainMenu() {
         String selectedMenu = "";
         Scanner scanner = new Scanner(System.in);
@@ -17,7 +21,7 @@ public class MainMenu {
                 if (selectedMenu.length() == 1) {
                     switch (selectedMenu.charAt(0)) {
                         case '1':
-                            System.out.println("Find and reserve a room");
+                            findAndReserveRoom();
                             break;
                         case '2':
                             System.out.println("See my reservations");
@@ -56,6 +60,18 @@ public class MainMenu {
                 "Please select a number for the menu option");
     }
 
+    private static void findAndReserveRoom() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter CheckIn Date mm/dd/yyyy example 02/01/2020");
+        Date checkIn = getDateFormat(scanner);
+
+        System.out.println("Enter Check-Out Date mm/dd/yyyy example 02/21/2020");
+        Date checkOut = getDateFormat(scanner);
+
+        displayMainMenu();
+    }
+
     private static void createAccount() {
         Scanner scanner = new Scanner(System.in);
 
@@ -75,5 +91,16 @@ public class MainMenu {
             System.out.println(ex.getLocalizedMessage());
             createAccount();
         }
+    }
+
+    private static Date getDateFormat(Scanner scanner) {
+        try {
+            return new SimpleDateFormat(DATE_FORMAT).parse(scanner.nextLine());
+        } catch (ParseException ex) {
+            System.out.println("Invalid date format!");
+            findAndReserveRoom();
+        }
+
+        return null;
     }
 }
