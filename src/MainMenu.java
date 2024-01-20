@@ -69,9 +69,10 @@ public class MainMenu {
         String lastName = scanner.nextLine();
 
         try {
-
+            hotelResource.createACustomer(userEmail, firstName, lastName);
         } catch (IllegalArgumentException ex) {
-
+            System.out.println(ex.getLocalizedMessage());
+            createAccount();
         }
     }
 }

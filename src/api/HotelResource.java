@@ -1,5 +1,6 @@
 package api;
 
+import Service.CustomerService;
 import model.Customer;
 import model.IRoom;
 import model.Reservation;
@@ -10,6 +11,8 @@ import java.util.Date;
 public class HotelResource {
 
     private static final HotelResource SINGLETON = new HotelResource();
+
+    private final CustomerService customerService = CustomerService.getSingleton();
 
     private HotelResource() {}
 
@@ -22,7 +25,7 @@ public class HotelResource {
     }
 
     public void createACustomer(String email, String firstName, String lastName) {
-
+        customerService.addCustomer(email, firstName, lastName);
     }
 
     public IRoom getRoom(String roomNumber) {
