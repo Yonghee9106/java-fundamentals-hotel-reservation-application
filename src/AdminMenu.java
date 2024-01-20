@@ -1,4 +1,5 @@
 import api.AdminResource;
+import model.Customer;
 import model.IRoom;
 import model.Room;
 import model.RoomType;
@@ -22,7 +23,7 @@ public class AdminMenu {
                 if (selectedMenu.length() == 1) {
                     switch (selectedMenu.charAt(0)) {
                         case '1':
-                            System.out.println("See all Customers");
+                            displayAllCustomers();
                             break;
                         case '2':
                             displayAllRooms();
@@ -63,6 +64,11 @@ public class AdminMenu {
                 "6. Back to Main Menu\n" +
                 "-------------------------------------------------------\n" +
                 "Please select a number for the menu option");
+    }
+
+    private static void displayAllCustomers() {
+        Collection<Customer> customers = adminResource.getAllCustomers();
+        System.out.println(customers);
     }
 
     private static void displayAllRooms() {

@@ -70,6 +70,7 @@ public class MainMenu {
 
         try {
             hotelResource.createACustomer(userEmail, firstName, lastName);
+            displayMainMenu();
         } catch (IllegalArgumentException ex) {
             System.out.println(ex.getLocalizedMessage());
             createAccount();
