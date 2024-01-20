@@ -25,7 +25,7 @@ public class CustomerService {
         return null;
     }
 
-    public Collection<Customer> getAllCustomer(){
-        return null;
+    public Collection<Customer> getAllCustomers(){
+        return customers.values();
     }
 }

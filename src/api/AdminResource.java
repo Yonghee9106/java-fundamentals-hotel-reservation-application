@@ -1,5 +1,6 @@
 package api;
 
+import Service.CustomerService;
 import Service.ReservationService;
 import model.Customer;
 import model.IRoom;
@@ -12,6 +13,7 @@ public class AdminResource {
     private static final AdminResource SINGLETON = new AdminResource();
 
     private final ReservationService reservationService = ReservationService.getSingleton();
+    private final CustomerService customerService = CustomerService.getSingleton();
     private AdminResource() {}
 
     public static AdminResource getSingleton() {
@@ -31,7 +33,7 @@ public class AdminResource {
     }
 
     public Collection<Customer> getAllCustomers() {
-        return null;
+        return customerService.getAllCustomers();
     }
 
     public void displayAllReservations() {
