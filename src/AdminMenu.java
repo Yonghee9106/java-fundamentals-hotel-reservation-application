@@ -68,7 +68,14 @@ public class AdminMenu {
 
     private static void displayAllCustomers() {
         Collection<Customer> customers = adminResource.getAllCustomers();
-        System.out.println(customers);
+
+        if (customers.isEmpty()) {
+            System.out.println("No customer record!");
+        } else {
+            adminResource.getAllCustomers().forEach(System.out::println);
+        }
+
+        displayAdminMenu();
     }
 
     private static void displayAllRooms() {
