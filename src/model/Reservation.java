@@ -22,4 +22,16 @@ public class Reservation {
                 + "CheckIn Date: " + this.checkInDate
                 + "CheckOut Date: " + this.checkOutDate;
     }
+
+    public IRoom getRoom() {
+        return this.room;
+    }
+
+    public Date getCheckInDate() {
+        return this.checkInDate;
+    }
+
+    public Date getCheckOutDate() {
+        return this.checkOutDate;
+    }
 }

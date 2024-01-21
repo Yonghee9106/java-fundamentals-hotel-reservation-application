@@ -1,7 +1,9 @@
 import api.HotelResource;
+import model.IRoom;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -69,7 +71,10 @@ public class MainMenu {
         System.out.println("Enter Check-Out Date mm/dd/yyyy example 02/21/2020");
         Date checkOut = getDateFormat(scanner);
 
-        displayMainMenu();
+        if (checkIn != null && checkOut != null) {
+            Collection<IRoom> availableRooms = hotelResource.findARoom(checkIn, checkOut);
+            System.out.println(availableRooms);
+        }
     }
 
     private static void createAccount() {

@@ -4,15 +4,15 @@ import model.Customer;
 import model.IRoom;
 import model.Reservation;
 
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class ReservationService {
 
     private static final ReservationService SINGLETON = new ReservationService();
     public static Map<String,IRoom> ListOfRoom = new HashMap<>();
+    private final Map<String, Collection<Reservation>> reservations = new HashMap<>();
+    private final Map<String, IRoom> rooms = new HashMap<>();
 
     private ReservationService() {}
 
@@ -37,7 +37,9 @@ public class ReservationService {
     }
 
     public Collection<IRoom> findRooms(Date checkInDate, Date checkOutDate) {
-        return null;
+        Collection<IRoom> allRooms = getAllRooms();
+
+        return allRooms;
     }
 
     public Collection<Reservation> getCustomerReservation(Customer customer) {

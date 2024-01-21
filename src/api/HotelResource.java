@@ -1,6 +1,7 @@
 package api;
 
 import Service.CustomerService;
+import Service.ReservationService;
 import model.Customer;
 import model.IRoom;
 import model.Reservation;
@@ -13,6 +14,7 @@ public class HotelResource {
     private static final HotelResource SINGLETON = new HotelResource();
 
     private final CustomerService customerService = CustomerService.getSingleton();
+    private final ReservationService reservationService = ReservationService.getSingleton();
 
     private HotelResource() {}
 
@@ -41,6 +43,6 @@ public class HotelResource {
     }
 
     public Collection<IRoom> findARoom(Date checkIn, Date checkOut) {
-        return null;
+        return reservationService.findRooms(checkIn, checkOut);
     }
 }
