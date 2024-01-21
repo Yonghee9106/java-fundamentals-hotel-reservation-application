@@ -5,14 +5,12 @@ import model.IRoom;
 import model.Reservation;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class ReservationService {
 
     private static final ReservationService SINGLETON = new ReservationService();
     public static Map<String,IRoom> ListOfRoom = new HashMap<>();
-    private final Map<String, Collection<Reservation>> reservations = new HashMap<>();
-    private final Map<String, IRoom> rooms = new HashMap<>();
+    public static List<Reservation> reservation = new ArrayList<>();
 
     private ReservationService() {}
 
@@ -37,9 +35,15 @@ public class ReservationService {
     }
 
     public Collection<IRoom> findRooms(Date checkInDate, Date checkOutDate) {
+        Collection<IRoom> availableRooms = new ArrayList<>();
+        Collection<IRoom> reservedRooms = new ArrayList<>();
         Collection<IRoom> allRooms = getAllRooms();
 
-        return allRooms;
+        if (reservation.isEmpty()) {
+            return allRooms;
+        }
+
+        return availableRooms;
     }
 
     public Collection<Reservation> getCustomerReservation(Customer customer) {
