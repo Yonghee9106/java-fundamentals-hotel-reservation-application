@@ -10,7 +10,7 @@ public class ReservationService {
 
     private static final ReservationService SINGLETON = new ReservationService();
     public static Map<String,IRoom> ListOfRoom = new HashMap<>();
-    public static List<Reservation> reservations = new ArrayList<>();
+    private final Map<String, Collection<Reservation>> reservations = new HashMap<>();
 
     private ReservationService() {}
 
@@ -35,29 +35,29 @@ public class ReservationService {
     }
 
     public Collection<IRoom> findRooms(Date checkInDate, Date checkOutDate) {
+        Collection<Reservation> reservedRooms = getAllReservations();
         Collection<IRoom> availableRooms = new ArrayList<>();
-        Collection<IRoom> reservedRooms = new ArrayList<>();
         Collection<IRoom> allRooms = getAllRooms();
 
         if (reservations.isEmpty()) {
             return allRooms;
         }
 
-        reservations.forEach((reservation)-> {
-            if ((!checkInDate.after(reservation.getCheckOutDate())
-                    && !checkOutDate.before(reservation.getCheckInDate())))
-            {
-                reservedRooms.add(reservation.getRoom());
-                System.out.println('1');
-            }
-        });
-
-        ListOfRoom.forEach((number, room) -> {
-            if(!reservedRooms.contains(room)) {
-                availableRooms.add(room);
-                System.out.println('2');
-            }
-        });
+//        reservations.forEach((reservation)-> {
+//            if ((!checkInDate.after(reservation.getCheckOutDate())
+//                    && !checkOutDate.before(reservation.getCheckInDate())))
+//            {
+//                reservedRooms.add(reservation.getRoom());
+//                System.out.println('1');
+//            }
+//        });
+//
+//        ListOfRoom.forEach((number, room) -> {
+//            if(!reservedRooms.contains(room)) {
+//                availableRooms.add(room);
+//                System.out.println('2');
+//            }
+//        });
 
         return availableRooms;
     }
@@ -68,5 +68,15 @@ public class ReservationService {
 
     public void printAllReservation(){
 
+    }
+
+    private Collection<Reservation> getAllReservations() {
+        final Collection<Reservation> allReservations = new LinkedList<>();
+
+        for(Collection<Reservation> reservations : reservations.values()) {
+            allReservations.addAll(reservations);
+        }
+
+        return allReservations;
     }
 }
