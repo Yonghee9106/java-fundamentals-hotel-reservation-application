@@ -37,7 +37,16 @@ public class ReservationService {
     public Collection<IRoom> findRooms(Date checkInDate, Date checkOutDate) {
         Collection<Reservation> reservedRooms = getAllReservations();
         Collection<IRoom> availableRooms = new ArrayList<>();
+        final Collection<IRoom> notAvailableRooms = new LinkedList<>();
         Collection<IRoom> allRooms = getAllRooms();
+
+
+
+        for (Reservation reservation : reservedRooms) {
+            if (checkReservations(reservation, checkInDate, checkOutDate)) {
+                notAvailableRooms.add(reservation.getRoom());
+            }
+        }
 
         if (reservations.isEmpty()) {
             return allRooms;
@@ -78,5 +87,10 @@ public class ReservationService {
         }
 
         return allReservations;
+    }
+
+    private boolean checkReservations(final Reservation reservation, final Date checkInDate, final Date checkOutDate) {
+        return checkInDate.before(reservation.getCheckOutDate())
+                && checkOutDate.after(reservation.getCheckInDate());
     }
 }
