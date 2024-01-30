@@ -48,10 +48,6 @@ public class ReservationService {
             }
         }
 
-        if (reservations.isEmpty()) {
-            return allRooms;
-        }
-
 //        reservations.forEach((reservation)-> {
 //            if ((!checkInDate.after(reservation.getCheckOutDate())
 //                    && !checkOutDate.before(reservation.getCheckInDate())))
