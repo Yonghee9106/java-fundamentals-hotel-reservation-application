@@ -5,6 +5,7 @@ import model.IRoom;
 import model.Reservation;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class ReservationService {
 
@@ -48,6 +49,9 @@ public class ReservationService {
             }
         }
 
+        return ListOfRoom.values().stream().filter(room -> notAvailableRooms.stream()
+                        .noneMatch(notAvailableRoom -> notAvailableRoom.equals(room))).collect(Collectors.toList());
+
 //        reservations.forEach((reservation)-> {
 //            if ((!checkInDate.after(reservation.getCheckOutDate())
 //                    && !checkOutDate.before(reservation.getCheckInDate())))
@@ -63,8 +67,6 @@ public class ReservationService {
 //                System.out.println('2');
 //            }
 //        });
-
-        return availableRooms;
     }
 
     public Collection<Reservation> getCustomerReservation(Customer customer) {
