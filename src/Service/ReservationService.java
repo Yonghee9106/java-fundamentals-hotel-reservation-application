@@ -52,15 +52,7 @@ public class ReservationService {
         return ListOfRoom.values().stream().filter(room -> notAvailableRooms.stream()
                         .noneMatch(notAvailableRoom -> notAvailableRoom.equals(room))).collect(Collectors.toList());
 
-//        reservations.forEach((reservation)-> {
-//            if ((!checkInDate.after(reservation.getCheckOutDate())
-//                    && !checkOutDate.before(reservation.getCheckInDate())))
-//            {
-//                reservedRooms.add(reservation.getRoom());
-//                System.out.println('1');
-//            }
-//        });
-//
+
 //        ListOfRoom.forEach((number, room) -> {
 //            if(!reservedRooms.contains(room)) {
 //                availableRooms.add(room);
