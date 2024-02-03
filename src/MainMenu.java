@@ -73,7 +73,12 @@ public class MainMenu {
 
         if (checkIn != null && checkOut != null) {
             Collection<IRoom> availableRooms = hotelResource.findARoom(checkIn, checkOut);
-            System.out.println(availableRooms);
+
+            if (availableRooms.isEmpty()) {
+                System.out.println("availeRooms is empty");
+            } else {
+                System.out.println("availeRooms is not empty");
+            }
         }
     }
 

@@ -51,14 +51,6 @@ public class ReservationService {
 
         return ListOfRoom.values().stream().filter(room -> notAvailableRooms.stream()
                         .noneMatch(notAvailableRoom -> notAvailableRoom.equals(room))).collect(Collectors.toList());
-
-
-//        ListOfRoom.forEach((number, room) -> {
-//            if(!reservedRooms.contains(room)) {
-//                availableRooms.add(room);
-//                System.out.println('2');
-//            }
-//        });
     }
 
     public Collection<Reservation> getCustomerReservation(Customer customer) {
