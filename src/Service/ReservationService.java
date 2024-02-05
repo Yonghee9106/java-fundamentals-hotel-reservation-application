@@ -37,11 +37,7 @@ public class ReservationService {
 
     public Collection<IRoom> findRooms(Date checkInDate, Date checkOutDate) {
         Collection<Reservation> reservedRooms = getAllReservations();
-        Collection<IRoom> availableRooms = new ArrayList<>();
         final Collection<IRoom> notAvailableRooms = new LinkedList<>();
-        Collection<IRoom> allRooms = getAllRooms();
-
-
 
         for (Reservation reservation : reservedRooms) {
             if (checkReservations(reservation, checkInDate, checkOutDate)) {
