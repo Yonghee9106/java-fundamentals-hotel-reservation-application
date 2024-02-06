@@ -54,7 +54,15 @@ public class ReservationService {
     }
 
     public void printAllReservation(){
+        final Collection<Reservation> reservations = getAllReservations();
 
+        if (reservations.isEmpty()) {
+            System.out.println("No reservations!");
+        } else {
+            for (Reservation reservation : reservations) {
+                System.out.println(reservation + "\n");
+            }
+        }
     }
 
     private Collection<Reservation> getAllReservations() {
