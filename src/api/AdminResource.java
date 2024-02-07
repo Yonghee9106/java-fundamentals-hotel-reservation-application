@@ -37,6 +37,6 @@ public class AdminResource {
     }
 
     public void displayAllReservations() {
-
+        reservationService.printAllReservation();
     }
 }
