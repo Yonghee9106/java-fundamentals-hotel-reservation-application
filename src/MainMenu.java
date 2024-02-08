@@ -26,7 +26,7 @@ public class MainMenu {
                             findAndReserveRoom();
                             break;
                         case '2':
-                            System.out.println("See my reservations");
+                            seeMyReservations();
                             break;
                         case '3':
                             createAccount();
@@ -80,6 +80,11 @@ public class MainMenu {
                 System.out.println("availeRooms is not empty");
             }
         }
+    }
+
+    private static void seeMyReservations() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter your Email Address: name@domain.com");
     }
 
     private static void createAccount() {
