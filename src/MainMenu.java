@@ -85,6 +85,9 @@ public class MainMenu {
     private static void seeMyReservations() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter your Email Address: name@domain.com");
+        String customerEmail = scanner.nextLine();
+
+        hotelResource.getCustomersReservation(customerEmail
     }
 
     private static void createAccount() {
