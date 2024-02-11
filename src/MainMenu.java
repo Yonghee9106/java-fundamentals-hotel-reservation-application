@@ -87,7 +87,7 @@ public class MainMenu {
         System.out.println("Enter your Email Address: name@domain.com");
         String customerEmail = scanner.nextLine();
 
-        hotelResource.getCustomersReservation(customerEmail
+        hotelResource.getCustomerReservation(customerEmail);
     }
 
     private static void createAccount() {

@@ -23,7 +23,7 @@ public class HotelResource {
     }
 
     public Customer getCustomer(String email) {
-        return null;
+        return customerService.getCustomer(email);
     }
 
     public void createACustomer(String email, String firstName, String lastName) {
@@ -39,6 +39,8 @@ public class HotelResource {
     }
 
     public Collection<Reservation> getCustomerReservation(String customerEmail) {
+        Customer customer = getCustomer(customerEmail);
+
         return null;
     }
 
