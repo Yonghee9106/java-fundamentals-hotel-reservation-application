@@ -29,7 +29,7 @@ public class AdminMenu {
                             displayAllRooms();
                             break;
                         case '3':
-                            System.out.println("See all Reservations");
+                            adminResource.displayAllReservations();
                             break;
                         case '4':
                             addRoom();
