@@ -50,7 +50,7 @@ public class ReservationService {
     }
 
     public Collection<Reservation> getCustomerReservation(Customer customer) {
-        return null;
+        return reservations.get(customer.getCustomerEmail());
     }
 
     public void printAllReservation(){
