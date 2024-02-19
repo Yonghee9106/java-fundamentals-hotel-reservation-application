@@ -46,7 +46,7 @@ public class HotelResource {
             return Collections.emptyList();
         }
 
-        return null;
+        return reservationService.getCustomerReservation(getCustomer(customerEmail));
     }
 
     public Collection<IRoom> findARoom(Date checkIn, Date checkOut) {
