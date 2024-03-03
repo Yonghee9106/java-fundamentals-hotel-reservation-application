@@ -10,6 +10,8 @@ import java.util.stream.Collectors;
 public class ReservationService {
 
     private static final ReservationService SINGLETON = new ReservationService();
+    private static final int RECOMMENDED_ROOMS_DEFAULT_PLUS_DAYS = 7;
+    private final Map<String, IRoom> rooms = new HashMap<>();
     public static Map<String,IRoom> ListOfRoom = new HashMap<>();
     private final Map<String, Collection<Reservation>> reservations = new HashMap<>();
 
@@ -78,5 +80,32 @@ public class ReservationService {
     private boolean checkReservations(final Reservation reservation, final Date checkInDate, final Date checkOutDate) {
         return checkInDate.before(reservation.getCheckOutDate())
                 && checkOutDate.after(reservation.getCheckInDate());
+    }
+
+    private Collection<IRoom> findAvailableRooms(final Date checkInDate, final Date checkOutDate) {
+        final Collection<Reservation> allReservations = getAllReservations();
+        final Collection<IRoom> notAvailableRooms = new LinkedList<>();
+
+        for (Reservation reservation : allReservations) {
+            if (checkReservations(reservation, checkInDate, checkOutDate)) {
+                notAvailableRooms.add(reservation.getRoom());
+            }
+        }
+
+        return rooms.values().stream().filter(room -> notAvailableRooms.stream()
+                        .noneMatch(notAvailableRoom -> notAvailableRoom.equals(room)))
+                .collect(Collectors.toList());
+    }
+
+    public Collection<IRoom> findAlternativeRooms(final Date checkInDate, final Date checkOutDate) {
+        return findAvailableRooms(addDefaultPlusDays(checkInDate), addDefaultPlusDays(checkOutDate));
+    }
+
+    public Date addDefaultPlusDays(final Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.DATE, RECOMMENDED_ROOMS_DEFAULT_PLUS_DAYS);
+
+        return calendar.getTime();
     }
 }
