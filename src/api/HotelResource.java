@@ -49,7 +49,15 @@ public class HotelResource {
         return reservationService.getCustomerReservation(getCustomer(customerEmail));
     }
 
+    public Collection<IRoom> findAlternativeRooms(final Date checkIn, final Date checkOut) {
+        return reservationService.findAlternativeRooms(checkIn, checkOut);
+    }
+
     public Collection<IRoom> findARoom(Date checkIn, Date checkOut) {
         return reservationService.findRooms(checkIn, checkOut);
+    }
+
+    public Date addDefaultPlusDays(final Date date) {
+        return reservationService.addDefaultPlusDays(date);
     }
 }
