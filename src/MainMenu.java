@@ -1,5 +1,6 @@
 import api.HotelResource;
 import model.IRoom;
+import model.Reservation;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -85,7 +86,60 @@ public class MainMenu {
                 System.out.println("We've only found rooms on alternative dates:" +
                         "\nCheck-In Date:" + alternativeCheckIn +
                         "\nCheck-Out Date:" + alternativeCheckOut);
+
+                printRooms(availableRooms);
             }
+        }
+    }
+
+    private static void reserveRoom(final Scanner scanner, final Date checkInDate,
+                                    final Date checkOutDate, final Collection<IRoom> rooms) {
+        System.out.println("Would you like to book? y/n");
+        final String bookRoom = scanner.nextLine();
+
+        if ("y".equals(bookRoom)) {
+            System.out.println("Do you have an account with us? y/n");
+            final String haveAccount = scanner.nextLine();
+
+            if ("y".equals(haveAccount)) {
+                System.out.println("Enter Email format: name@domain.com");
+                final String customerEmail = scanner.nextLine();
+
+                if (hotelResource.getCustomer(customerEmail) == null) {
+                    System.out.println("Customer not found.\nYou may need to create a new account.");
+                } else {
+                    System.out.println("What room number would you like to reserve?");
+                    final String roomNumber = scanner.nextLine();
+
+                    if (rooms.stream().anyMatch(room -> room.getRoomNumber().equals(roomNumber))) {
+                        final IRoom room = hotelResource.getRoom(roomNumber);
+
+                        final Reservation reservation = hotelResource
+                                .bookARoom(customerEmail, room, checkInDate, checkOutDate);
+                        System.out.println("Reservation created successfully!");
+                        System.out.println(reservation);
+                    } else {
+                        System.out.println("Error: room number not available.\nStart reservation again.");
+                    }
+                }
+
+                displayMainMenu();
+            } else {
+                System.out.println("Please, create an account.");
+                displayMainMenu();
+            }
+        } else if ("n".equals(bookRoom)){
+            displayMainMenu();
+        } else {
+            reserveRoom(scanner, checkInDate, checkOutDate, rooms);
+        }
+    }
+
+    private static void printRooms(final Collection<IRoom> rooms) {
+        if (rooms.isEmpty()) {
+            System.out.println("No rooms found.");
+        } else {
+            rooms.forEach(System.out::println);
         }
     }
 
