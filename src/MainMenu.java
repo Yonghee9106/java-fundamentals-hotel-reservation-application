@@ -10,8 +10,9 @@ import java.util.Scanner;
 
 public class MainMenu {
     // Todo List
-    // find and reserve rooms
-    // see my all reservation
+    // finalize code and function
+    // submit and pass
+    // refactor
     private static final HotelResource hotelResource = HotelResource.getSingleton();
     private static final String DATE_FORMAT = "MM/dd/yyyy";
     public static void mainMenu() {
